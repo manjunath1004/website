@@ -20,31 +20,95 @@ const Dashboard = () => {
   };
 
   return (
-    <div style={{ padding: '30px', fontFamily: 'Arial, sans-serif', backgroundColor: '#D7CCC8', minHeight: '100vh' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px', backgroundColor: '#795548', padding: '20px', borderRadius: '15px', color: '#D7CCC8', boxShadow: '0 6px 20px rgba(0,0,0,0.4)' }}>
-        <h2 style={{ margin: 0, fontSize: '2rem', fontWeight: 'bold' }}>Welcome to Your Eating Insights</h2>
-        <button onClick={handleLogout} style={{ padding: '12px 24px', backgroundColor: '#A1887F', color: '#D7CCC8', border: 'none', borderRadius: '10px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1rem', transition: 'background-color 0.3s' }}>
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: '#ffffff',
+      padding: '2rem'
+    }}>
+      <header style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '2rem',
+        padding: '1rem 0',
+        borderBottom: '1px solid #e0e0e0'
+      }}>
+        <h1 style={{
+          margin: 0,
+          color: '#1a1a1a',
+          fontSize: '1.8rem',
+          fontWeight: '600'
+        }}>
+          Eating Insights
+        </h1>
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: '0.5rem 1rem',
+            backgroundColor: '#f8f9fa',
+            color: '#6c757d',
+            border: '1px solid #dee2e6',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '0.9rem',
+            transition: 'all 0.2s'
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = '#e9ecef';
+            e.target.style.borderColor = '#adb5bd';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = '#f8f9fa';
+            e.target.style.borderColor = '#dee2e6';
+          }}
+        >
           Logout
         </button>
       </header>
-      <nav style={{ marginBottom: '30px', textAlign: 'center' }}>
+
+      <nav style={{
+        display: 'flex',
+        gap: '1rem',
+        marginBottom: '2rem'
+      }}>
         <button
           onClick={() => setActiveTab('present')}
-          style={{ padding: '15px 30px', marginRight: '15px', backgroundColor: activeTab === 'present' ? '#795548' : '#A1887F', color: '#D7CCC8', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', transition: 'all 0.3s' }}
+          style={{
+            padding: '0.75rem 1.5rem',
+            backgroundColor: activeTab === 'present' ? '#007bff' : 'transparent',
+            color: activeTab === 'present' ? 'white' : '#6c757d',
+            border: '1px solid #007bff',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            fontWeight: '500',
+            transition: 'all 0.2s'
+          }}
         >
           Present
         </button>
         <button
           onClick={() => setActiveTab('history')}
-          style={{ padding: '15px 30px', backgroundColor: activeTab === 'history' ? '#795548' : '#A1887F', color: '#D7CCC8', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.3)', transition: 'all 0.3s' }}
+          style={{
+            padding: '0.75rem 1.5rem',
+            backgroundColor: activeTab === 'history' ? '#007bff' : 'transparent',
+            color: activeTab === 'history' ? 'white' : '#6c757d',
+            border: '1px solid #007bff',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            fontWeight: '500',
+            transition: 'all 0.2s'
+          }}
         >
           History
         </button>
       </nav>
-      <div>
+
+      <main>
         {activeTab === 'present' && <PresentTab />}
         {activeTab === 'history' && <HistoryTab />}
-      </div>
+      </main>
     </div>
   );
 };

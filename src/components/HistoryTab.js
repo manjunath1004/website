@@ -1,7 +1,6 @@
 import React from 'react';
 
 const HistoryTab = () => {
-  // Mock data - in real app, fetch from backend
   const weeklyPatterns = [
     "Week 1: Evening meals heavy ↑",
     "Week 2: Oil-rich foods ↓",
@@ -14,20 +13,41 @@ const HistoryTab = () => {
     "Patterns show consistent improvement in meal timing"
   ];
 
+  const Card = ({ title, items, bgColor = '#f8f9fa' }) => (
+    <div style={{
+      backgroundColor: bgColor,
+      borderRadius: '8px',
+      padding: '1.5rem',
+      marginBottom: '1.5rem',
+      border: '1px solid #e9ecef'
+    }}>
+      <h3 style={{
+        margin: '0 0 1rem 0',
+        color: '#1a1a1a',
+        fontSize: '1.2rem',
+        fontWeight: '600'
+      }}>
+        {title}
+      </h3>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        {items.map((item, index) => (
+          <p key={index} style={{
+            margin: 0,
+            color: '#666666',
+            fontSize: '1rem',
+            lineHeight: '1.5'
+          }}>
+            {item}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <div>
-      <div style={{ marginBottom: '25px', padding: '25px', backgroundColor: '#A1887F', borderRadius: '15px', border: '4px solid #795548', boxShadow: '0 6px 18px rgba(0,0,0,0.2)' }}>
-        <h3 style={{ color: '#D7CCC8', fontSize: '1.5rem', marginBottom: '15px', fontWeight: 'bold' }}>Weekly Patterns</h3>
-        {weeklyPatterns.map((pattern, index) => (
-          <p key={index} style={{ margin: '10px 0', color: '#D7CCC8', fontSize: '1.1rem', lineHeight: '1.4' }}>{pattern}</p>
-        ))}
-      </div>
-      <div style={{ padding: '25px', backgroundColor: '#D7CCC8', borderRadius: '15px', border: '4px solid #A1887F', boxShadow: '0 6px 18px rgba(0,0,0,0.2)' }}>
-        <h3 style={{ color: '#795548', fontSize: '1.5rem', marginBottom: '15px', fontWeight: 'bold' }}>Bi-weekly Trends</h3>
-        {biWeeklyTrends.map((trend, index) => (
-          <p key={index} style={{ margin: '10px 0', color: '#795548', fontSize: '1.1rem', lineHeight: '1.4' }}>{trend}</p>
-        ))}
-      </div>
+    <div style={{ maxWidth: '800px' }}>
+      <Card title="Weekly Patterns" items={weeklyPatterns} bgColor="#fff3cd" />
+      <Card title="Bi-weekly Overview" items={biWeeklyTrends} bgColor="#d1ecf1" />
     </div>
   );
 };

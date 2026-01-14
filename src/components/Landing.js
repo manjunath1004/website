@@ -8,34 +8,116 @@ const Landing = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Mock login
-    if (username && password) {
+    // Simple login validation
+    if (username.trim() && password.trim()) {
       localStorage.setItem('isLoggedIn', 'true');
       navigate('/dashboard');
     }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundColor: '#D7CCC8' }}>
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '2rem', color: '#795548', fontWeight: 'bold', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>Eating Behavior Insight</h1>
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', width: '320px', backgroundColor: '#ffffff', padding: '25px', borderRadius: '15px', boxShadow: '0 8px 25px rgba(0,0,0,0.3)', border: '3px solid #A1887F' }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      backgroundColor: '#ffffff',
+      padding: '2rem'
+    }}>
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 style={{
+          fontSize: '2.5rem',
+          marginBottom: '0.5rem',
+          color: '#1a1a1a',
+          fontWeight: '600'
+        }}>
+          Eating Behavior Insight
+        </h1>
+        <p style={{
+          color: '#666666',
+          fontSize: '1.1rem',
+          maxWidth: '400px',
+          margin: '0 auto',
+          lineHeight: '1.5'
+        }}>
+          Understand your eating patterns with gentle guidance
+        </p>
+      </div>
+
+      <form
+        onSubmit={handleLogin}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          width: '100%',
+          maxWidth: '320px'
+        }}
+      >
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ padding: '12px', marginBottom: '15px', border: '2px solid #A1887F', borderRadius: '8px', backgroundColor: '#D7CCC8', fontSize: '1rem' }}
+          required
+          style={{
+            padding: '1rem',
+            border: '1px solid #e0e0e0',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            outline: 'none',
+            transition: 'border-color 0.2s'
+          }}
+          onFocus={(e) => e.target.style.borderColor = '#007bff'}
+          onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
         />
+
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ padding: '12px', marginBottom: '15px', border: '2px solid #A1887F', borderRadius: '8px', backgroundColor: '#D7CCC8', fontSize: '1rem' }}
+          required
+          style={{
+            padding: '1rem',
+            border: '1px solid #e0e0e0',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            outline: 'none',
+            transition: 'border-color 0.2s'
+          }}
+          onFocus={(e) => e.target.style.borderColor = '#007bff'}
+          onBlur={(e) => e.target.style.borderColor = '#e0e0e0'}
         />
-        <button type="submit" style={{ padding: '12px', backgroundColor: '#795548', color: '#D7CCC8', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem', transition: 'background-color 0.3s' }}>
-          Login
+
+        <button
+          type="submit"
+          style={{
+            padding: '1rem',
+            backgroundColor: '#007bff',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '1rem',
+            fontWeight: '500',
+            cursor: 'pointer',
+            transition: 'background-color 0.2s'
+          }}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}
+        >
+          Sign In
         </button>
+
+        <p style={{
+          textAlign: 'center',
+          color: '#999999',
+          fontSize: '0.9rem',
+          margin: '0'
+        }}>
+          Demo: username "demo", password "password"
+        </p>
       </form>
     </div>
   );
